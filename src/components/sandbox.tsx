@@ -1,0 +1,96 @@
+import { useMemo, useState } from "react";
+import {
+  ALL_EVIDENCE,
+  isGenuinelyDisputed,
+  type EvidenceEntry,
+} from "@/lib/oa";
+import { DisputeStatus } from "@/components/dispute-status";
+import {
+  StanceFilter,
+  type StanceFilter as StanceFilterValue,
+} from "@/components/stance-filter";
+import { KeyNumbers } from "@/components/key-numbers";
+import { EvidencePanel } from "@/components/evidence-panel";
+import { EvidenceDrawer } from "@/components/evidence-drawer";
+import { DisclaimerBox } from "@/components/disclaimer-box";
+import { Sources } from "@/components/sources";
+import { STRINGS_DE } from "@/lib/oa/strings.de.ts";
+
+export function Sandbox() {
+  const [filter, setFilter] = useState<StanceFilterValue>("all");
+  const [selectedId, setSelectedId] = useState<EvidenceEntry["id"] | null>(null);
+
+  const visible = useMemo(() => {
+    if (filter === "all") return ALL_EVIDENCE;
+    return ALL_EVIDENCE.filter((e) => e.stance === filter);
+  }, [filter]);
+
+  const selected = ALL_EVIDENCE.find((e) => e.id === selectedId) ?? null;
+  const hiddenCount = ALL_EVIDENCE.length - visible.length;
+
+  return (
+    <div className="min-h-dvh overflow-x-hidden bg-bg text-fg">
+      <div className="mx-auto max-w-6xl px-4 pt-8 pb-16 sm:px-6 sm:pt-12">
+        <header className="max-w-3xl">
+          <p className="text-2xs font-medium uppercase tracking-[0.18em] text-subtle">
+            {STRINGS_DE.eyebrow}
+          </p>
+          <h1 className="mt-3 font-heading text-4xl leading-[1.05] tracking-tight sm:text-5xl">
+            {STRINGS_DE.titleLead}
+            <span className="italic text-accent">{STRINGS_DE.titleAccent}</span>
+          </h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
+            {STRINGS_DE.lead}
+          </p>
+        </header>
+
+        <div className="mt-8 space-y-4">
+          <DisputeStatus />
+
+          <section className="rounded-xl bg-surface p-4 shadow-border sm:p-5">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h2 className="font-heading text-2xl tracking-tight">
+                  {STRINGS_DE.filterHeading}
+                </h2>
+                <p className="mt-1 text-sm text-muted">
+                  {STRINGS_DE.filterHint}{" "}
+                  <span className="font-mono text-accent">
+                    is_genuinely_disputed() = {isGenuinelyDisputed() ? "true" : "false"}
+                  </span>
+                </p>
+              </div>
+              <StanceFilter value={filter} onChange={setFilter} />
+            </div>
+            {hiddenCount > 0 ? (
+              <p className="mt-3 text-xs text-subtle">
+                {hiddenCount === 1
+                  ? "1 Eintrag ausgeblendet - der Streit bleibt offen."
+                  : `${hiddenCount} Eintraege ausgeblendet - der Streit bleibt offen.`}
+              </p>
+            ) : null}
+          </section>
+
+          <KeyNumbers />
+
+          <EvidencePanel
+            visible={visible}
+            selectedId={selectedId}
+            onSelect={setSelectedId}
+          />
+
+          <DisclaimerBox />
+          <Sources />
+        </div>
+      </div>
+
+      <EvidenceDrawer
+        entry={selected}
+        open={selectedId != null}
+        onOpenChange={(open) => {
+          if (!open) setSelectedId(null);
+        }}
+      />
+    </div>
+  );
+}

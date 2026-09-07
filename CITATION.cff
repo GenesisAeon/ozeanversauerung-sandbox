@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use this sandbox, please cite it and the underlying papers."
+type: software
+authors:
+  - family-names: Römer
+    given-names: Johann
+    affiliation: "MOR Research Collective"
+title: ozeanversauerung-sandbox
+version: "0.1.0"
+date-released: "2026-09-07"
+url: "https://github.com/GenesisAeon/ozeanversauerung-sandbox"
+repository-code: "https://github.com/GenesisAeon/ozeanversauerung-sandbox"
+license: MIT
+abstract: >
+  Interactive ocean-acidification dispute map using published constants
+  from ocean-acidification-utac (P122). No UTAC/CREP/AFET bridge and no
+  invented Gamma value.
+keywords:
+  - GenesisAeon
+  - P122
+  - ocean-acidification
+  - planetary-boundary
+references:
+  - type: article
+    title: "Ocean Acidification: Another Planetary Boundary Crossed"
+    authors:
+      - name: "Findlay, H.S."
+      - name: "Feely, R.A."
+    year: 2025
+    journal: "Global Change Biology"
+    doi: "10.1111/gcb.70238"
+  - type: article
+    title: "Revisiting the ocean acidification planetary boundary"
+    authors:
+      - name: "Findlay, H.S."
+      - name: "Feely, R.A."
+    year: 2026
+    journal: "National Science Review"
+    doi: "10.1093/nsr/nwag173"

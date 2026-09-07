@@ -1,0 +1,48 @@
+export {
+  PACKAGE_ID,
+  SOURCE_VERSION,
+  OCEAN_ACIDIFICATION_NOTE,
+  ORIGINAL_THRESHOLD_OMEGA_ARAG_PCT_OF_PREINDUSTRIAL,
+  SURFACE_OCEAN_BOUNDARY_CROSSED_PCT,
+  SUBSURFACE_OCEAN_BOUNDARY_CROSSED_PCT,
+  SUBSURFACE_DEPTH_LIMIT_M,
+  ESTIMATED_CROSSING_YEAR,
+  CORAL_REEF_PROTECTIVE_THRESHOLD_PCT,
+  ARCTIC_ALREADY_UNDERSATURATED_TODAY,
+  FINDLAY_2025_CITATION,
+  FINDLAY_2025_DOI,
+  FINDLAY_FEELY_2026_CITATION,
+  FINDLAY_FEELY_2026_DOI,
+  BOUNDARY_METRIC_REVISION_NOTE,
+} from "./constants.ts";
+
+export {
+  ALL_EVIDENCE,
+  boundaryCrossedEvidence,
+  definitionRevisionEvidence,
+  isGenuinelyDisputed,
+  surfaceOceanBoundaryCrossedPct,
+  subsurfaceOceanBoundaryCrossedPct,
+  subsurfaceDepthLimitM,
+  estimatedCrossingYear,
+  originalThresholdPctOfPreindustrial,
+  isBoundaryCrossingATippingPoint,
+  isReversalTheoreticallyPossible,
+  does80pctThresholdMeetOriginalCriteria,
+  coralReefProtectiveThresholdPct,
+  isArcticAlreadyUndersaturatedToday,
+  isBoundaryDefinitionSettledScience,
+  type EvidenceEntry,
+  type Stance,
+} from "./evidence.ts";
+
+export {
+  STANCE_LABEL_DE,
+  EVIDENCE_TITLE_DE,
+  EVIDENCE_CORE_DE,
+  EVIDENCE_DOI,
+  EVIDENCE_URL,
+  KEY_NUMBERS,
+  stanceLabelDe,
+  headlineFor,
+} from "./display.ts";

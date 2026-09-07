@@ -1,0 +1,16 @@
+# Ozeanversauerung-Sandbox
+
+> Interaktive Streitkarte fuer Ozeanversauerung. Portiert 1:1 aus ocean-acidification-utac (P122, v1.0.0). Findlay 2025: ~40%/60%, ~2020, kein Kipppunkt. Findlay & Feely 2026: 80% erfuellt Kriterien nicht; Arktis untersaettigt; Riffe 85%. is_genuinely_disputed() strukturell true.
+
+## Quellen
+- Findlay et al. (2025), GCB, DOI 10.1111/gcb.70238
+- Findlay & Feely (2026), NSR, DOI 10.1093/nsr/nwag173
+
+## Maschinenlesbar
+- [context.json](/context.json)
+- Schema: https://github.com/GenesisAeon/apps-hub/blob/main/docs/ai-context-schema.md
+
+## Oekosystem
+- https://apps-hub-alpha.vercel.app/
+- https://klimakatalog.vercel.app/p/ocean-acidification-utac
+- https://github.com/GenesisAeon/ocean-acidification-utac

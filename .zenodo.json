@@ -1,0 +1,39 @@
+{
+  "title": "ozeanversauerung-sandbox - P122: Interactive ocean-acidification dispute map",
+  "description": "<p>Interactive OA dispute map ported 1:1 from ocean-acidification-utac. NO UTAC/CREP/AFET. No package DOI yet.</p>",
+  "creators": [
+    {
+      "name": "Römer, Johann",
+      "affiliation": "MOR Research Collective"
+    }
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "access_right": "open",
+  "version": "0.1.0",
+  "keywords": [
+    "GenesisAeon",
+    "P122",
+    "ocean-acidification",
+    "planetary-boundary"
+  ],
+  "communities": [
+    {
+      "identifier": "genesisaeon"
+    }
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/GenesisAeon/ocean-acidification-utac",
+      "relation": "isSupplementTo",
+      "scheme": "url",
+      "resource_type": "software"
+    },
+    {
+      "identifier": "https://github.com/GenesisAeon/ozeanversauerung-sandbox/blob/main/WHITEPAPER.md",
+      "relation": "isPartOf",
+      "scheme": "url",
+      "resource_type": "publication-other"
+    }
+  ]
+}

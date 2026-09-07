@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.2.0",
+  "generated": "2026-09-07",
+  "app": {
+    "id": "ozeanversauerung-sandbox",
+    "title": "Ozeanversauerung-Sandbox",
+    "kind": "mechanik",
+    "live_url": "https://ozeanversauerung-sandbox.vercel.app",
+    "repo_url": "https://github.com/GenesisAeon/ozeanversauerung-sandbox",
+    "llms_txt_url": "https://ozeanversauerung-sandbox.vercel.app/llms.txt"
+  },
+  "source_package": {
+    "name": "ocean-acidification-utac",
+    "package_id": 122,
+    "version": "1.0.0",
+    "repo_url": "https://github.com/GenesisAeon/ocean-acidification-utac",
+    "ported_note": "1:1 port at source v1.0.0. No new number."
+  },
+  "primary_sources": [
+    {
+      "authors": "Findlay et al.",
+      "year": 2025,
+      "title": "Ocean Acidification: Another Planetary Boundary Crossed",
+      "journal": "Global Change Biology",
+      "doi": "10.1111/gcb.70238"
+    },
+    {
+      "authors": "Findlay & Feely",
+      "year": 2026,
+      "title": "Revisiting the ocean acidification planetary boundary",
+      "journal": "National Science Review",
+      "doi": "10.1093/nsr/nwag173"
+    }
+  ],
+  "verified_quantities": [
+    {
+      "name": "SURFACE_OCEAN_BOUNDARY_CROSSED_PCT",
+      "value": 40.0,
+      "unit": "%",
+      "source": "Findlay 2025"
+    },
+    {
+      "name": "SUBSURFACE_OCEAN_BOUNDARY_CROSSED_PCT",
+      "value": 60.0,
+      "unit": "%",
+      "source": "Findlay 2025"
+    },
+    {
+      "name": "SUBSURFACE_DEPTH_LIMIT_M",
+      "value": 200,
+      "unit": "m",
+      "source": "Findlay 2025"
+    },
+    {
+      "name": "ESTIMATED_CROSSING_YEAR",
+      "value": 2020,
+      "unit": "year",
+      "source": "Findlay 2025"
+    },
+    {
+      "name": "ORIGINAL_THRESHOLD_OMEGA_ARAG_PCT_OF_PREINDUSTRIAL",
+      "value": 80.0,
+      "unit": "%",
+      "source": "Findlay 2025/2026"
+    },
+    {
+      "name": "CORAL_REEF_PROTECTIVE_THRESHOLD_PCT",
+      "value": 85.0,
+      "unit": "%",
+      "source": "Findlay & Feely 2026"
+    }
+  ],
+  "tipping": {
+    "kind": "undefined",
+    "value": null,
+    "unit": null,
+    "derived_from": "Not a tipping point.",
+    "defined": false,
+    "origin": "undefined"
+  },
+  "regen": {
+    "kind": "undefined",
+    "value": null,
+    "unit": null,
+    "derived_from": "Reversal theoretically possible; no timescale in source.",
+    "defined": false,
+    "origin": "undefined"
+  },
+  "entropy_bg": {
+    "kind": "undefined",
+    "value": null,
+    "unit": null,
+    "derived_from": "No matching quantity in source; none invented.",
+    "defined": false,
+    "origin": "undefined"
+  },
+  "comparable": false,
+  "formula_ref": "ALL_EVIDENCE structural comparison (isGenuinelyDisputed), no ODE",
+  "honesty_checks": [
+    {
+      "name": "isGenuinelyDisputed",
+      "always_returns": true,
+      "meaning": "Both stances present among ALL_EVIDENCE."
+    },
+    {
+      "name": "isBoundaryCrossingATippingPoint",
+      "always_returns": false,
+      "meaning": "Not a tipping point."
+    },
+    {
+      "name": "does80pctThresholdMeetOriginalCriteria",
+      "always_returns": false,
+      "meaning": "Headline honesty check."
+    },
+    {
+      "name": "isBoundaryDefinitionSettledScience",
+      "always_returns": false,
+      "meaning": "Metric under revision."
+    }
+  ],
+  "framework_overlay": {
+    "used": false,
+    "terms": []
+  },
+  "disclaimer": "Reale Kontroverse. Kein Kipppunkt. Kein UTAC/CREP/AFET, kein Gamma."
+}
