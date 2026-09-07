@@ -1,11 +1,7 @@
-import {
-  ALL_EVIDENCE,
-  EVIDENCE_TITLE_DE,
-  type EvidenceEntry,
-  headlineFor,
-} from "@/lib/oa";
+import { ALL_EVIDENCE, type EvidenceEntry } from "@/lib/oa";
 import { StanceBadge } from "@/components/stance-badge";
-import { STRINGS_DE } from "@/lib/oa/strings.de.ts";
+import { useLocale } from "@/lib/i18n/locale";
+import { headlineForLocale } from "@/lib/i18n/messages";
 import { cn } from "@/lib/utils";
 
 export function EvidencePanel({
@@ -17,17 +13,17 @@ export function EvidencePanel({
   selectedId: EvidenceEntry["id"] | null;
   onSelect: (id: EvidenceEntry["id"]) => void;
 }) {
+  const { t } = useLocale();
+
   return (
     <section className="rounded-xl bg-surface p-4 shadow-border sm:p-5">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h2 className="font-heading text-2xl tracking-tight">{STRINGS_DE.evidenceHeading}</h2>
-          <p className="mt-1 text-sm text-muted">
-            Beide Befunde gleichzeitig sichtbar halten - Ueberschreitung und Massstab-Revision.
-          </p>
+          <h2 className="font-heading text-2xl tracking-tight">{t.evidenceHeading}</h2>
+          <p className="mt-1 text-sm text-muted">{t.evidenceLead}</p>
         </div>
         <p className="font-mono text-2xs text-subtle">
-          {visible.length} / {ALL_EVIDENCE.length} Eintraege
+          {t.entriesCount(visible.length, ALL_EVIDENCE.length)}
         </p>
       </div>
 
@@ -47,12 +43,12 @@ export function EvidencePanel({
           >
             <div className="flex flex-wrap items-center gap-2">
               <p className="text-sm font-medium leading-snug text-fg">
-                {EVIDENCE_TITLE_DE[entry.id]}
+                {t.evidenceTitle[entry.id]}
               </p>
               <StanceBadge stance={entry.stance} />
             </div>
             <p className="font-mono text-xs tabular-nums text-muted">
-              {headlineFor(entry)}
+              {headlineForLocale(entry, t)}
             </p>
           </button>
         ))}

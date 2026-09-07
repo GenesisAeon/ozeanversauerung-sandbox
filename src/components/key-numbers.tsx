@@ -1,18 +1,21 @@
-import { KEY_NUMBERS } from "@/lib/oa";
 import {
   does80pctThresholdMeetOriginalCriteria,
   isBoundaryCrossingATippingPoint,
   isBoundaryDefinitionSettledScience,
   isReversalTheoreticallyPossible,
 } from "@/lib/oa";
-import { STRINGS_DE } from "@/lib/oa/strings.de.ts";
+import { useLocale } from "@/lib/i18n/locale";
+import { keyNumbersForLocale } from "@/lib/i18n/messages";
 
 export function KeyNumbers() {
+  const { t } = useLocale();
+  const numbers = keyNumbersForLocale(t);
+
   return (
     <section className="rounded-xl bg-surface p-4 shadow-border sm:p-5">
-      <h2 className="font-heading text-2xl tracking-tight">{STRINGS_DE.numbersHeading}</h2>
+      <h2 className="font-heading text-2xl tracking-tight">{t.numbersHeading}</h2>
       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3">
-        {KEY_NUMBERS.map((n) => (
+        {numbers.map((n) => (
           <div key={n.id} className="rounded-lg bg-elevated p-3">
             <p className="text-2xs font-medium uppercase tracking-[0.12em] text-subtle">
               {n.label}
@@ -23,7 +26,7 @@ export function KeyNumbers() {
       </div>
 
       <h3 className="mt-6 text-2xs font-medium uppercase tracking-[0.14em] text-subtle">
-        {STRINGS_DE.honestyHeading}
+        {t.honestyHeading}
       </h3>
       <ul className="mt-3 space-y-2 font-mono text-xs text-muted">
         <li>

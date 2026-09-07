@@ -1,9 +1,10 @@
 import { isGenuinelyDisputed } from "@/lib/oa";
-import { STRINGS_DE } from "@/lib/oa/strings.de.ts";
+import { useLocale } from "@/lib/i18n/locale";
 import { Split } from "lucide-react";
 
 export function DisputeStatus() {
   const disputed = isGenuinelyDisputed();
+  const { t } = useLocale();
 
   return (
     <section
@@ -16,16 +17,16 @@ export function DisputeStatus() {
         </span>
         <div className="min-w-0">
           <p className="text-2xs font-medium uppercase tracking-[0.16em] text-subtle">
-            {STRINGS_DE.statusLabel}
+            {t.statusLabel}
           </p>
           <h2 className="mt-1 font-heading text-2xl leading-tight tracking-tight sm:text-3xl">
-            {STRINGS_DE.statusHeading}
+            {t.statusHeading}
           </h2>
           <p className="mt-2 font-mono text-xs text-accent">
             is_genuinely_disputed() = {disputed ? "true" : "false"}
           </p>
           <p className="mt-3 max-w-2xl text-sm leading-relaxed text-muted">
-            {STRINGS_DE.statusBody}
+            {t.statusBody}
           </p>
         </div>
       </div>

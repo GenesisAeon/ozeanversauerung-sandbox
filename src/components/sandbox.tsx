@@ -14,9 +14,11 @@ import { EvidencePanel } from "@/components/evidence-panel";
 import { EvidenceDrawer } from "@/components/evidence-drawer";
 import { DisclaimerBox } from "@/components/disclaimer-box";
 import { Sources } from "@/components/sources";
-import { STRINGS_DE } from "@/lib/oa/strings.de.ts";
+import { LocaleSwitch } from "@/components/locale-switch";
+import { useLocale } from "@/lib/i18n/locale";
 
 export function Sandbox() {
+  const { t } = useLocale();
   const [filter, setFilter] = useState<StanceFilterValue>("all");
   const [selectedId, setSelectedId] = useState<EvidenceEntry["id"] | null>(null);
 
@@ -32,15 +34,18 @@ export function Sandbox() {
     <div className="min-h-dvh overflow-x-hidden bg-bg text-fg">
       <div className="mx-auto max-w-6xl px-4 pt-8 pb-16 sm:px-6 sm:pt-12">
         <header className="max-w-3xl">
-          <p className="text-2xs font-medium uppercase tracking-[0.18em] text-subtle">
-            {STRINGS_DE.eyebrow}
-          </p>
+          <div className="flex flex-wrap items-start justify-between gap-3">
+            <p className="text-2xs font-medium uppercase tracking-[0.18em] text-subtle">
+              {t.eyebrow}
+            </p>
+            <LocaleSwitch />
+          </div>
           <h1 className="mt-3 font-heading text-4xl leading-[1.05] tracking-tight sm:text-5xl">
-            {STRINGS_DE.titleLead}
-            <span className="italic text-accent">{STRINGS_DE.titleAccent}</span>
+            {t.titleLead}
+            <span className="italic text-accent">{t.titleAccent}</span>
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
-            {STRINGS_DE.lead}
+            {t.lead}
           </p>
         </header>
 
@@ -51,10 +56,10 @@ export function Sandbox() {
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <h2 className="font-heading text-2xl tracking-tight">
-                  {STRINGS_DE.filterHeading}
+                  {t.filterHeading}
                 </h2>
                 <p className="mt-1 text-sm text-muted">
-                  {STRINGS_DE.filterHint}{" "}
+                  {t.filterHint}{" "}
                   <span className="font-mono text-accent">
                     is_genuinely_disputed() = {isGenuinelyDisputed() ? "true" : "false"}
                   </span>
@@ -64,9 +69,8 @@ export function Sandbox() {
             </div>
             {hiddenCount > 0 ? (
               <p className="mt-3 text-xs text-subtle">
-                {hiddenCount === 1
-                  ? "1 Eintrag ausgeblendet - der Streit bleibt offen."
-                  : `${hiddenCount} Eintraege ausgeblendet - der Streit bleibt offen.`}
+                {hiddenCount === 1 ? t.hiddenOne : t.hiddenMany(hiddenCount)}{" "}
+                {t.hiddenSuffix}
               </p>
             ) : null}
           </section>

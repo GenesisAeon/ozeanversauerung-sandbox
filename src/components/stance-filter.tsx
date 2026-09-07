@@ -1,15 +1,9 @@
 import { Button } from "@/components/ui/button";
 import type { Stance } from "@/lib/oa";
-import { STRINGS_DE } from "@/lib/oa/strings.de.ts";
+import { useLocale } from "@/lib/i18n/locale";
 import { cn } from "@/lib/utils";
 
 export type StanceFilter = "all" | Stance;
-
-const OPTIONS: { id: StanceFilter; label: string }[] = [
-  { id: "all", label: STRINGS_DE.filterAll },
-  { id: "boundary_crossed", label: STRINGS_DE.filterCrossed },
-  { id: "definition_revision", label: STRINGS_DE.filterRevision },
-];
 
 export function StanceFilter({
   value,
@@ -18,13 +12,16 @@ export function StanceFilter({
   value: StanceFilter;
   onChange: (next: StanceFilter) => void;
 }) {
+  const { t } = useLocale();
+  const options: { id: StanceFilter; label: string }[] = [
+    { id: "all", label: t.filterAll },
+    { id: "boundary_crossed", label: t.filterCrossed },
+    { id: "definition_revision", label: t.filterRevision },
+  ];
+
   return (
-    <div
-      className="flex flex-wrap gap-2"
-      role="group"
-      aria-label="Nach Richtung filtern"
-    >
-      {OPTIONS.map((opt) => (
+    <div className="flex flex-wrap gap-2" role="group" aria-label={t.filterAria}>
+      {options.map((opt) => (
         <Button
           key={opt.id}
           type="button"

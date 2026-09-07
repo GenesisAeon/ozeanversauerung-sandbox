@@ -1,15 +1,9 @@
 import { Drawer } from "vaul";
-import {
-  EVIDENCE_CORE_DE,
-  EVIDENCE_DOI,
-  EVIDENCE_TITLE_DE,
-  EVIDENCE_URL,
-  type EvidenceEntry,
-  headlineFor,
-} from "@/lib/oa";
+import { EVIDENCE_DOI, EVIDENCE_URL, type EvidenceEntry } from "@/lib/oa";
 import { StanceBadge } from "@/components/stance-badge";
 import { Button } from "@/components/ui/button";
-import { STRINGS_DE } from "@/lib/oa/strings.de.ts";
+import { useLocale } from "@/lib/i18n/locale";
+import { headlineForLocale } from "@/lib/i18n/messages";
 import { ExternalLink, X } from "lucide-react";
 
 export function EvidenceDrawer({
@@ -21,6 +15,7 @@ export function EvidenceDrawer({
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
+  const { t } = useLocale();
   const doi = entry ? EVIDENCE_DOI[entry.id] : null;
   const url = entry ? EVIDENCE_URL[entry.id] : null;
 
@@ -35,17 +30,17 @@ export function EvidenceDrawer({
               <div className="flex items-start justify-between gap-3">
                 <div className="min-w-0">
                   <Drawer.Title className="font-heading text-2xl leading-tight tracking-tight">
-                    {EVIDENCE_TITLE_DE[entry.id]}
+                    {t.evidenceTitle[entry.id]}
                   </Drawer.Title>
                   <Drawer.Description className="mt-2 font-mono text-sm tabular-nums text-muted">
-                    {headlineFor(entry)}
+                    {headlineForLocale(entry, t)}
                   </Drawer.Description>
                 </div>
                 <Button
                   type="button"
                   variant="ghost"
                   size="icon"
-                  aria-label={STRINGS_DE.close}
+                  aria-label={t.close}
                   onClick={() => onOpenChange(false)}
                 >
                   <X className="size-4" />
@@ -58,16 +53,16 @@ export function EvidenceDrawer({
 
               <section className="mt-5">
                 <h3 className="text-2xs font-medium uppercase tracking-[0.14em] text-subtle">
-                  {STRINGS_DE.coreClaim}
+                  {t.coreClaim}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-fg">
-                  {EVIDENCE_CORE_DE[entry.id]}
+                  {t.evidenceCore[entry.id]}
                 </p>
               </section>
 
               <section className="mt-5">
                 <h3 className="text-2xs font-medium uppercase tracking-[0.14em] text-subtle">
-                  {STRINGS_DE.citation}
+                  {t.citation}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">{entry.citation}</p>
               </section>
@@ -75,7 +70,7 @@ export function EvidenceDrawer({
               {doi || url ? (
                 <section className="mt-5">
                   <h3 className="text-2xs font-medium uppercase tracking-[0.14em] text-subtle">
-                    {STRINGS_DE.doiSource}
+                    {t.doiSource}
                   </h3>
                   <a
                     className="mt-2 inline-flex min-h-11 items-center gap-2 font-mono text-xs text-accent underline-offset-4 hover:underline"
@@ -90,7 +85,7 @@ export function EvidenceDrawer({
               ) : null}
 
               <p className="mt-6 text-xs leading-relaxed text-subtle">
-                {STRINGS_DE.drawerFoot}{" "}
+                {t.drawerFoot}{" "}
                 <span className="font-mono">is_genuinely_disputed() = true</span>.
               </p>
             </div>
